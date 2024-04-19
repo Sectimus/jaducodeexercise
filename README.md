@@ -1,4 +1,5 @@
-# Jadu Engineer Code Exercise
+
+# <img src="https://cmscritic.com/ms-content/uploads/2023/08/jadu-product-logo.png" width="48"> Jadu Engineer Code Exercise
 ## The brief
 We would like you to write a small PHP application, utilising the Symfony Framework, to
 implement the following operations as outlined within the [CheckerInterface.php](https://gist.github.com/dgudgeon/7198459ee90abdddc13231e8b5e064bb) file:
