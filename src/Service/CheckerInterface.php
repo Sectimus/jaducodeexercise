@@ -1,27 +1,30 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace App;
+declare(strict_types=1);
+
+namespace App\Service;
 
 /**
  * Pangrams, anagrams and palindromes
  */
-interface CheckerInterface {
+interface CheckerInterface
+{
     /**
      * A palindrome is a word, phrase, number, or other sequence of characters
      * which reads the same backward or forward.
      */
-    public function isPalindrome(string $word) : bool;
+    public function isPalindrome(string $word): bool;
 
     /**
      * An anagram is the result of rearranging the letters of a word or phrase
      * to produce a new word or phrase, using all the original letters
      * exactly once.
      */
-    public function isAnagram(string $word, string $comparison) : bool;
+    public function isAnagram(string $word, string $comparison): bool;
 
     /**
      * A Pangram for a given alphabet is a sentence using every letter of the
      * alphabet at least once.
      */
-    public function isPangram(string $phrase) : bool;
+    public function isPangram(string $phrase): bool;
 }
