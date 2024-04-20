@@ -8,6 +8,7 @@ services:
     volumes:
       - ./src:/var/www/src
       - ./tests:/var/www/tests
+    restart: always
   ###> doctrine/doctrine-bundle ###
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
