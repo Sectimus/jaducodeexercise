@@ -17,6 +17,32 @@ class CheckerController extends AbstractController
         $this->checkerService = $checkerService;
     }
 
+    #[Route('/anagram/validate', name: 'check anagram', methods: ['POST'])]
+    public function anagram(Request $request): Response
+    {
+        $json = json_decode($request->getContent(), true);
+
+        if ($json === null || !(isset($json['word']) && isset($json['comparison']))) {
+            //failed to decode json, possible non-json payload provided
+            return $this->invalidContent("Please ensure you provide a valid JSON payload with a \"word\" and \"comparison\" key.");
+        }
+
+        $word = $json['word'];
+        $comparison = $json['comparison'];
+
+        if (!$this->checkerService->isAnagram($word, $comparison)) {
+            return new Response(
+                "The word: \"" . $word . "\" is NOT an anagram of \"" . $comparison . "\"",
+                Response::HTTP_OK
+            );
+        }
+
+        return new Response(
+            "The word: \"" . $word . "\" is an anagram of \"" . $comparison . "\"",
+            Response::HTTP_OK
+        );
+    }
+
     private function invalidContent(?string $message = null): Response
     {
         return new Response(
