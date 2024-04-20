@@ -31,4 +31,13 @@ class CheckerServiceTest extends TestCase
         $result = $this->instance->isAnagram('coalface', 'dark elf');
         $this->assertFalse($result);
     }
+
+    public function testIsPangram()
+    {
+        $result = $this->instance->isPangram('The quick brown fox jumps over the lazy dog');
+        $this->assertTrue($result);
+
+        $result = $this->instance->isPangram('The British Broadcasting Corporation (BBC) is a British public service broadcaster.');
+        $this->assertFalse($result);
+    }
 }
