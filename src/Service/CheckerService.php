@@ -19,7 +19,8 @@ class CheckerService implements CheckerInterface
 
         //drop all characters to lowercase to ensure case insensitivity
         $word = strtolower($word);
-        $comparison = strtolower($word);
+        $comparison = strtolower($comparison);
+
 
         return count_chars($word, 1) === count_chars($comparison, 1);
     }
