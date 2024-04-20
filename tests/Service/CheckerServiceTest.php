@@ -22,4 +22,13 @@ class CheckerServiceTest extends TestCase
         $result = $this->instance->isPalindrome('bark');
         $this->assertFalse($result);
     }
+
+    public function testIsAnagram()
+    {
+        $result = $this->instance->isAnagram('coalface', 'cacao elf');
+        $this->assertTrue($result);
+
+        $result = $this->instance->isAnagram('coalface', 'dark elf');
+        $this->assertFalse($result);
+    }
 }
