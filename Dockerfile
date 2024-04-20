@@ -1,6 +1,7 @@
 # Use an official PHP runtime as a parent image
 FROM php:8.3-apache
 RUN a2enmod rewrite
+RUN service apache2 restart
 
 WORKDIR /var/www
 
