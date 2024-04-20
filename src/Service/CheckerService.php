@@ -13,7 +13,11 @@ class CheckerService implements CheckerInterface
 
     public function isAnagram(string $word, string $comparison): bool
     {
-        return false;
+        //remove any spaces from the word and comparison as they are not evaluated as part of an anagram
+        $word = str_replace(' ', '', $word);
+        $comparison = str_replace(' ', '', $comparison);
+
+        return count_chars($word, 1) === count_chars($comparison, 1);
     }
 
     public function isPangram(string $phrase): bool
