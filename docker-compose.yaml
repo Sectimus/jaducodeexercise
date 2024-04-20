@@ -7,6 +7,7 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/src
+      - ./tests:/var/www/tests
   ###> doctrine/doctrine-bundle ###
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
