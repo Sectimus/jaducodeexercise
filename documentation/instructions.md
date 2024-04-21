@@ -73,7 +73,7 @@ To build and run the project locally, follow these steps:
     2. Once Apache is running, you can access the application by navigating to `http://localhost:8080` in your web browser. You should be welcomed by a default symfony landing page. This application is developed as an API and as such, does not offer a friendly GUI as it was not within scope of the project.
 
 ## Usage
-Once the application is set up locally, you can interact with it using an API development tool like [Postman](https://www.postman.com/) - There is a provided collection within the repository: [jaducodeexercise.postman_collection.json](/jaducodeexercise.postman_collection.json) that you can use to import some handy prewritten requests.
+Once the application is running, you can interact with it using an API development tool like [Postman](https://www.postman.com/) - There is a provided collection within the repository: [jaducodeexercise.postman_collection.json](/jaducodeexercise.postman_collection.json) that you can use to import some handy prewritten requests.
 
 ### Palindrome
 POST `http://{{host}}:{{port}}/palindrome/validate` - The provided JSON body should include a "word" key.
