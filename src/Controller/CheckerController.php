@@ -31,13 +31,13 @@ class CheckerController extends AbstractController
 
         if (!$this->checkerService->isPalindrome($json['word'])) {
             return new Response(
-                "The word: \"" . $word . "\" is NOT a palindrome",
+                "The word: \"" . $word . "\" is NOT a palindrome.",
                 Response::HTTP_OK
             );
         }
 
         return new Response(
-            "The word: \"" . $word . "\" is a palindrome",
+            "The word: \"" . $word . "\" is a palindrome.",
             Response::HTTP_OK
         );
     }
@@ -93,7 +93,7 @@ class CheckerController extends AbstractController
         );
     }
 
-    private function invalidContent(?string $message = null): Response
+    protected function invalidContent(?string $message = null): Response
     {
         return new Response(
             $message ?? 'Invalid content',
