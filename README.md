@@ -22,7 +22,7 @@ features that you choose to implement.*
 ## Submission
 Please create and share a GitHub repository containing your completed solution with us.
 At a minimum, please provide the following within your submission:
-+ `instructions.md` - any instructions / requirements that we might need to run your application should this be relevant
-+ `time.md` - tell us how your time broke down throughout the tasks in this exercise
++ [`instructions.md`](/documentation/instructions.md) - any instructions / requirements that we might need to run your application should this be relevant
++ [`time.md`](/documentation/time.md) - tell us how your time broke down throughout the tasks in this exercise
 + All files required by your application to work
 + Any other supporting files / documents used by you during the completion of this exercise
