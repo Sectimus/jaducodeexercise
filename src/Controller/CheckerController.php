@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Controller for interacting with the CheckerService to validate palindromes, anagrams and pangrams. Route: /{type}/validate
+ */
 class CheckerController extends AbstractController
 {
     private CheckerService $checkerService;
@@ -17,6 +20,12 @@ class CheckerController extends AbstractController
         $this->checkerService = $checkerService;
     }
 
+    /**
+     * Validates if the provided word is a palindrome.
+     * Request body should be a JSON object with a 'word' key.
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/palindrome/validate', name: 'check palindrome', methods: ['POST'])]
     public function palindrome(Request $request): Response
     {
@@ -42,6 +51,12 @@ class CheckerController extends AbstractController
         );
     }
 
+    /**
+     * Validates if the provided word is an anagram of the comparison word.
+     * Request body should be a JSON object with 'word' and 'comparison' keys.
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/anagram/validate', name: 'check anagram', methods: ['POST'])]
     public function anagram(Request $request): Response
     {
@@ -68,6 +83,12 @@ class CheckerController extends AbstractController
         );
     }
 
+    /**
+     * Validates if the provided phrase is a pangram.
+     * Request body should be a JSON object with a 'phrase' key.
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/pangram/validate', name: 'check pangram', methods: ['POST'])]
     public function pangram(Request $request): Response
     {
@@ -93,6 +114,12 @@ class CheckerController extends AbstractController
         );
     }
 
+    /**
+     * Returns a shared response indicating invalid content was provided to the action.
+     * If a $message parameter is provided, it will be used, otherwise a default message is used.
+     * @param string|null $message
+     * @return Response
+     */
     protected function invalidContent(?string $message = null): Response
     {
         return new Response(
