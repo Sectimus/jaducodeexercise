@@ -18,3 +18,4 @@
 + Added docblocks for various functions implemented throughout the project. I have decided to omit this from the actual check functions of the `CheckerService` as the docblocks from the implemented interface `CheckerInterface` are pulled through when inspecting.
 + I decided to convert all Responses to JsonResponses as this design is more inline with an API than actual user interactable endpoints. This also makes testing language agnostic.
 + Added integration tests for the `CheckerController`.
++ Cleaned up Integration and unit tests, added additional comments and made common functions more generic.
