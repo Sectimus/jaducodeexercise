@@ -18,6 +18,7 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @group unit
      * @covers ::isPalindrome
      */
     public function testIsPalindrome()
@@ -30,6 +31,7 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @group unit
      * @covers ::isPalindrome
      */
     public function testIsPalindromeWithStrippedData()
@@ -39,6 +41,7 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @group unit
      * @covers ::isAnagram
      */
     public function testIsAnagram()
@@ -51,6 +54,7 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @group unit
      * @covers ::isAnagram
      */
     public function testIsAnagramWithStrippedData()
@@ -60,6 +64,7 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @group unit
      * @covers ::isPangram
      */
     public function testIsPangram()
@@ -72,6 +77,7 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @group unit
      * @covers ::isPangram
      */
     public function testIsPangramWithStrippedData()
