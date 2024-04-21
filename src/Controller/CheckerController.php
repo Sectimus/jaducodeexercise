@@ -39,10 +39,10 @@ class CheckerController extends AbstractController
         $word = $json['word'];
 
         if (!$this->checkerService->isPalindrome($json['word'])) {
-            return $this->buildResponse("The word: \"$word\" is NOT a palindrome.", false);
+            return $this->buildResponse("The word: '" . $word . "' is NOT a palindrome.", false);
         }
 
-        return $this->buildResponse("The word: \"$word\" is a palindrome.", true);
+        return $this->buildResponse("The word: '" . $word . "' is a palindrome.", true);
     }
 
     /**
@@ -58,17 +58,17 @@ class CheckerController extends AbstractController
 
         if ($json === null || !(isset($json['word']) && isset($json['comparison']))) {
             //failed to decode json, possible non-json payload provided
-            return $this->invalidContent("Please ensure you provide a valid JSON payload with a \"word\" and \"comparison\" key.");
+            return $this->invalidContent("Please ensure you provide a valid JSON payload with a 'word' and 'comparison' key.");
         }
 
         $word = $json['word'];
         $comparison = $json['comparison'];
 
         if (!$this->checkerService->isAnagram($word, $comparison)) {
-            return $this->buildResponse("The word: \"$word\" is NOT an anagram of \"$comparison\".", false);
+            return $this->buildResponse("The word: '" . $word . "' is NOT an anagram of '$comparison'.", false);
         }
 
-        return $this->buildResponse("The word: \"$word\" is an anagram of \"$comparison\".", true);
+        return $this->buildResponse("The word: '" . $word . "' is an anagram of '$comparison'.", true);
     }
 
     /**
@@ -84,16 +84,16 @@ class CheckerController extends AbstractController
 
         if ($json === null || !isset($json['phrase'])) {
             //failed to decode json, possible non-json payload provided
-            return $this->invalidContent("Please ensure you provide a valid JSON payload with a \"phrase\" key.");
+            return $this->invalidContent("Please ensure you provide a valid JSON payload with a 'phrase' key.");
         }
 
         $phrase = $json['phrase'];
 
         if (!$this->checkerService->isPangram($phrase)) {
-            return $this->buildResponse("The phrase: \"$phrase\" is NOT a pangram.", false);
+            return $this->buildResponse("The phrase: '" . $phrase . "' is NOT a pangram.", false);
         }
 
-        return $this->buildResponse("The phrase: \"$phrase\" is a pangram.", true);
+        return $this->buildResponse("The phrase: '" . $phrase . "' is a pangram.", true);
     }
 
     /**
