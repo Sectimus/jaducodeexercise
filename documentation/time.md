@@ -13,3 +13,7 @@
 + I created the `CheckerService` to implement the required `CheckerInterface` functions of `isPalindrome(...)`, `isAnagram(...)` and `isPangram(...)`
 + I then used dependency injection via symfony autowiring to pull the `CheckerService` through to the constructor of the `CheckerController` and initate it for use.
 + Three seperate branches were then spun off to develop each feature seperately, these were `feature/palindrome`, `feature/anagram` and `feature/pangram`. These will subsequently be merged to `main` when the work is complete.
++ The logic of identifying a palindrome, anagram and pangram were completed on their respective branches. Three PRs were raised to go to main with example use cases provided.
++ I realised that spaces and capital letters can affect the checker functions so I added a string preperation function `CheckerService::prep()` that will ensure passed strings are ready for checks.
+# DAY 3
++ I discovered that punctuation can also affect the checker function, so I added logic to strip all non-A-Z characters. *(I am aware that this will make it more difficult to support multi-language, however palindromes, anagrams and pangrams may differ from region to region. How would right-to-left langages like Arabic work? Or contextual languages like Mandarin or Korean?)*. To better support this, it makes use of the `CheckerService::ALPHABET` constant, we can add or remove characters to this array to include them in the checks *(EX. allowing numerals to be used)*.

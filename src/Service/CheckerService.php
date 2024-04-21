@@ -40,12 +40,17 @@ class CheckerService implements CheckerInterface
      */
     private function prep(string $string): string
     {
-        //remove any spaces from the word and comparison as they are not evaluated as part of an anagram
-        $string = str_replace(' ', '', $string);
-
         //drop all characters to lowercase to ensure case insensitivity
         $string = strtolower($string);
 
-        return $string;
+        //remove all non-alphabetic characters from the string as they are not evaluated as part of an anagram
+        $preparedString = "";
+        foreach (str_split($string) as $char) {
+            if (in_array($char, self::ALPHABET)) {
+                $preparedString .= $char;
+            }
+        }
+
+        return $preparedString;
     }
 }
