@@ -38,7 +38,7 @@ class CheckerService implements CheckerInterface
     /**
      * Prepares the provided string for usage in the service
      */
-    private function prep(string $string): string
+    protected function prep(string $string): string
     {
         //drop all characters to lowercase to ensure case insensitivity
         $string = strtolower($string);
