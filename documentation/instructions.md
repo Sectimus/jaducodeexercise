@@ -75,6 +75,12 @@ To build and run the project locally, follow these steps:
 ## Usage
 Once the application is running, you can interact with it using an API development tool like [Postman](https://www.postman.com/) - There is a provided collection within the repository: [jaducodeexercise.postman_collection.json](/jaducodeexercise.postman_collection.json) that you can use to import some handy prewritten requests.
 
+Each response will include a JSON payload with the `message` and `pass` keys.
+|    Key    |                                  Description                                  |
+|-----------|-------------------------------------------------------------------------------|
+| `message` | A localised `string` *(hardcoded english only)* with the result of your query |
+| `pass`    | A langauge agnostic `boolean` value that indicates the result of your query   |
+
 ### Palindrome
 POST `http://{{host}}:{{port}}/palindrome/validate` - The provided JSON body should include a "word" key.
 EX.:
@@ -84,7 +90,10 @@ EX.:
 }
 ```
 
-> The word: "anna" is a palindrome.
+> {
+    "message": "The word: 'anna' is a palindrome.",
+    "pass": true
+  }
 
 
 ```
@@ -93,7 +102,10 @@ EX.:
 }
 ```
 
-> The word: "Bark" is NOT a palindrome.
+> {
+    "message": "The word: 'Bark' is NOT a palindrome.",
+    "pass": false
+  }
 
 ### Anagram
 POST  `http://{{host}}:{{port}}/anagram/validate` - The provided JSON body should include the keys: "word" and "comparison"
@@ -105,7 +117,10 @@ EX.:
 }
 ```
 
-> The word: "coalface" is an anagram of "cacao elf".
+> {
+    "message": "The word: 'coalface' is an anagram of 'cacao elf'.",
+    "pass": true
+  }
 
 
 ```
@@ -115,7 +130,10 @@ EX.:
 }
 ```
 
-> The word: "coalface" is NOT an anagram of "dark elf".
+> {
+    "message": "The word: 'coalface' is NOT an anagram of 'dark elf'.",
+    "pass": false
+  }
 
 ### Pangram
 POST  `http://{{host}}:{{port}}/pangram/validate` - The provided JSON body should include a "phrase" key.
@@ -126,7 +144,10 @@ EX.:
 }
 ```
 
-> The phrase: "The quick brown fox jumps over the lazy dog" is a pangram.
+> {
+    "message": "The phrase: 'The quick brown fox jumps over the lazy dog' is a pangram.",
+    "pass": true
+  }
 
 
 ```
@@ -135,7 +156,10 @@ EX.:
 }
 ```
 
-> The phrase: "The British Broadcasting Corporation (BBC) is a British public service broadcaster." is NOT a pangram.
+> {
+    "message": "The phrase: 'The British Broadcasting Corporation (BBC) is a British public service broadcaster.' is NOT a pangram.",
+    "pass": false
+  }
 
 ## Testing
 All test cases are grouped as either `unit` or `integration`. Both types of tests can be run sequentially via:
