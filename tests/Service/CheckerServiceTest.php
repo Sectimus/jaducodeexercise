@@ -30,6 +30,15 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @covers ::isPalindrome
+     */
+    public function testIsPalindromeWithStrippedData()
+    {
+        $result = $this->instance->isPalindrome('a4£n3 n 1a');
+        $this->assertTrue($result);
+    }
+
+    /**
      * @covers ::isAnagram
      */
     public function testIsAnagram()
@@ -42,6 +51,15 @@ final class CheckerServiceTest extends TestCase
     }
 
     /**
+     * @covers ::isAnagram
+     */
+    public function testIsAnagramWithStrippedData()
+    {
+        $result = $this->instance->isAnagram('coa1$lf a c e', 'c1 aca!o elf');
+        $this->assertTrue($result);
+    }
+
+    /**
      * @covers ::isPangram
      */
     public function testIsPangram()
@@ -51,5 +69,14 @@ final class CheckerServiceTest extends TestCase
 
         $result = $this->instance->isPangram('The British Broadcasting Corporation (BBC) is a British public service broadcaster.');
         $this->assertFalse($result);
+    }
+
+    /**
+     * @covers ::isPangram
+     */
+    public function testIsPangramWithStrippedData()
+    {
+        $result = $this->instance->isPangram('The 1quic£k b3rown fox2 jumps4overthe lazydog');
+        $this->assertTrue($result);
     }
 }
