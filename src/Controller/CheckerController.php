@@ -57,13 +57,13 @@ class CheckerController extends AbstractController
 
         if (!$this->checkerService->isAnagram($word, $comparison)) {
             return new Response(
-                "The word: \"" . $word . "\" is NOT an anagram of \"" . $comparison . "\"",
+                "The word: \"" . $word . "\" is NOT an anagram of \"" . $comparison . "\".",
                 Response::HTTP_OK
             );
         }
 
         return new Response(
-            "The word: \"" . $word . "\" is an anagram of \"" . $comparison . "\"",
+            "The word: \"" . $word . "\" is an anagram of \"" . $comparison . "\".",
             Response::HTTP_OK
         );
     }
@@ -96,7 +96,7 @@ class CheckerController extends AbstractController
     protected function invalidContent(?string $message = null): Response
     {
         return new Response(
-            $message ?? 'Invalid content',
+            $message ?? 'Invalid content.',
             Response::HTTP_BAD_REQUEST
         );
     }
