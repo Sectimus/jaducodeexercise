@@ -137,7 +137,21 @@ EX.:
 
 > The phrase: "The British Broadcasting Corporation (BBC) is a British public service broadcaster." is NOT a pangram.
 
-
+## Testing
+All test cases are grouped as either `unit` or `integration`. Both types of tests can be run sequentially via:
+```
+php bin/phpunit
+``` 
+### Unit tests
+If you want to just execute unit tests:
+```
+php bin/phpunit --group unit
+```
+### Integration tests
+If you want to just execute integration tests:
+```
+php bin/phpunit --group integration
+```
 
 
 ## License
