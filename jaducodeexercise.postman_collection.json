@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "e6ae24df-a30d-4ab6-9529-e8d6af789aa5",
+		"name": "jaducodeexercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9203064"
+	},
+	"item": [
+		{
+			"name": "palindrome",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"word\": \"anna\"\r\n}\r\n// {\r\n//     \"word\": \"Bark\"\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/palindrome/validate",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"palindrome",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "anagram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"word\": \"coalface\",\r\n    \"comparison\": \"cacao elf\"\r\n}\r\n// {\r\n//     \"word\": \"coalface\",\r\n//     \"comparison\": \"dark elf\"\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/anagram/validate",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"anagram",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pangram",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phrase\": \"The quick brown fox jumps over the lazy dog\"\r\n}\r\n// {\r\n//     \"phrase\": \"The British Broadcasting Corporation (BBC) is a British public service broadcaster.\"\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/pangram/validate",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"pangram",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

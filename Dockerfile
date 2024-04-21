@@ -5,7 +5,7 @@ RUN service apache2 restart
 
 WORKDIR /var/www
 
-# Install Symfony and dependencies
+# Install Symfony dependencies
 RUN apt-get update \
     && apt-get install -y libzip-dev git wget --no-install-recommends \
     && apt-get clean \
@@ -15,8 +15,13 @@ RUN apt-get update \
 RUN docker-php-ext-install pdo mysqli pdo_mysql zip;
 
 # Install Composer
-RUN wget https://getcomposer.org/download/2.0.9/composer.phar \ 
+RUN wget https://getcomposer.org/download/2.7.3/composer.phar \ 
     && mv composer.phar /usr/bin/composer && chmod +x /usr/bin/composer
+
+# Install composer dependencies
+COPY composer.json composer.json
+COPY composer.lock composer.lock
+RUN composer install
 
 # Apache configuration file
 COPY /apache.conf /etc/apache2/sites-enabled/000-default.conf
