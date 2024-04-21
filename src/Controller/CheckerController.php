@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Service\CheckerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
@@ -24,10 +24,10 @@ class CheckerController extends AbstractController
      * Validates if the provided word is a palindrome.
      * Request body should be a JSON object with a 'word' key.
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
     #[Route('/palindrome/validate', name: 'check palindrome', methods: ['POST'])]
-    public function palindrome(Request $request): Response
+    public function palindrome(Request $request): JsonResponse
     {
         $json = json_decode($request->getContent(), true);
 
@@ -39,26 +39,20 @@ class CheckerController extends AbstractController
         $word = $json['word'];
 
         if (!$this->checkerService->isPalindrome($json['word'])) {
-            return new Response(
-                "The word: \"" . $word . "\" is NOT a palindrome.",
-                Response::HTTP_OK
-            );
+            return $this->buildResponse("The word: \"$word\" is NOT a palindrome.", false);
         }
 
-        return new Response(
-            "The word: \"" . $word . "\" is a palindrome.",
-            Response::HTTP_OK
-        );
+        return $this->buildResponse("The word: \"$word\" is a palindrome.", true);
     }
 
     /**
      * Validates if the provided word is an anagram of the comparison word.
      * Request body should be a JSON object with 'word' and 'comparison' keys.
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
     #[Route('/anagram/validate', name: 'check anagram', methods: ['POST'])]
-    public function anagram(Request $request): Response
+    public function anagram(Request $request): JsonResponse
     {
         $json = json_decode($request->getContent(), true);
 
@@ -71,26 +65,20 @@ class CheckerController extends AbstractController
         $comparison = $json['comparison'];
 
         if (!$this->checkerService->isAnagram($word, $comparison)) {
-            return new Response(
-                "The word: \"" . $word . "\" is NOT an anagram of \"" . $comparison . "\".",
-                Response::HTTP_OK
-            );
+            return $this->buildResponse("The word: \"$word\" is NOT an anagram of \"$comparison\".", false);
         }
 
-        return new Response(
-            "The word: \"" . $word . "\" is an anagram of \"" . $comparison . "\".",
-            Response::HTTP_OK
-        );
+        return $this->buildResponse("The word: \"$word\" is an anagram of \"$comparison\".", true);
     }
 
     /**
      * Validates if the provided phrase is a pangram.
      * Request body should be a JSON object with a 'phrase' key.
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
     #[Route('/pangram/validate', name: 'check pangram', methods: ['POST'])]
-    public function pangram(Request $request): Response
+    public function pangram(Request $request): JsonResponse
     {
         $json = json_decode($request->getContent(), true);
 
@@ -102,29 +90,37 @@ class CheckerController extends AbstractController
         $phrase = $json['phrase'];
 
         if (!$this->checkerService->isPangram($phrase)) {
-            return new Response(
-                "The phrase: \"" . $phrase . "\" is NOT a pangram.",
-                Response::HTTP_OK
-            );
+            return $this->buildResponse("The phrase: \"$phrase\" is NOT a pangram.", false);
         }
 
-        return new Response(
-            "The phrase: \"" . $phrase . "\" is a pangram.",
-            Response::HTTP_OK
-        );
+        return $this->buildResponse("The phrase: \"$phrase\" is a pangram.", true);
     }
 
     /**
      * Returns a shared response indicating invalid content was provided to the action.
      * If a $message parameter is provided, it will be used, otherwise a default message is used.
      * @param string|null $message
-     * @return Response
+     * @return JsonResponse
      */
-    protected function invalidContent(?string $message = null): Response
+    protected function invalidContent(?string $message = null): JsonResponse
     {
-        return new Response(
-            $message ?? 'Invalid content.',
-            Response::HTTP_BAD_REQUEST
-        );
+        return new JsonResponse([
+            'message' => $message ?? 'Invalid content.',
+            'pass' => false
+        ], JsonResponse::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     * Builds a JSON response with a message and a pass boolean indicating if the parameter(s) matched the called check function.
+     * @param string $message
+     * @param bool $pass
+     * @return JsonResponse
+     */
+    protected function buildResponse(string $message, bool $pass): JsonResponse
+    {
+        return new JsonResponse([
+            'message' => $message,
+            'pass' => $pass
+        ], JsonResponse::HTTP_OK);
     }
 }
